@@ -51,7 +51,7 @@ N_p = 11, 17
 N_n = 12, 18.45
 #fragments = Na , Cl , S, Ne, Ar, Mg, P, Si, F, O, N, C, Al, Be, Li, B
 fragments =  S, Ne, O, Si, Al, P, F, N, C, Mg, Na, He, B, Li, Be, Cl, Ar
-U_frac = 0.1e-9
+U_frac = 5e-6
 
 
 
