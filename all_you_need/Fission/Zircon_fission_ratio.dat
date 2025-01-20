@@ -1,0 +1,6 @@
+# Spontaneous Fission Fragments of Uranium-238
+# Data from GEF
+# U-frac	 rho_expected [tracks/cm^2]	 rho_sff [tracks/cm^2]	 ratio
+1.82e-06	2.3582e+07	9.7935e+07	4.153	0.2408
+2.07e-06	2.0498e+07	1.1139e+08	5.434	0.184
+2.38e-06	1.5190e+07	1.2807e+08	8.431	0.1186
