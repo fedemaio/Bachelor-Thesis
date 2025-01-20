@@ -526,7 +526,7 @@ class Mineral:
         y = y_bins[:-1] + y_width/2.
         #Returns in events/kg/Myr/nm
         
-        # self.frag = ['S', 'Ne', 'O', 'Si', 'Al', 'P', 'F', 'N', 'C', 'Mg', 'Na', 'He', 'Li', 'Be', 'Cl', 'Ar']
+        self.frag = ['S', 'Ne', 'O', 'Si', 'Al', 'P', 'F', 'N', 'C', 'Mg', 'Na', 'He', 'Li', 'Be', 'Cl', 'Ar']
         # B ha problemi per halite
         dRdx_mu = np.zeros(len(y))
         for i, nuc in enumerate(self.frag):
