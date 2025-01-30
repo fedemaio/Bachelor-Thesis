@@ -116,7 +116,7 @@ def Count(weight,Er):
     return [countCl35, countCl37, countNa23, countNuclei, nuclei] #restituisce gli array dei vari nuclei con i rispettivi conteggi
         
 #crea un'immagine con il grafico (scala log) dei vari conteggi
-def PlotCount(Er, Count, name): 
+def PlotCount(Er, Count, name, flux_name): 
     plt.figure(figsize=(12,8))
     
     Er_width = np.diff(Er) #differenza tra un valore dell'array e quella precedente = larghezza del bin
@@ -139,18 +139,22 @@ def PlotCount(Er, Count, name):
     plt.xlabel("E [$\\mathrm{keV}$]")
     plt.ylabel("dR/dE [$\\mathrm{keV}^{-1}\,\\mathrm{kg}^{-1}\,\\mathrm{Myr}^{-1}\,\\mathrm{sr}^{-1}$]")
     plt.xlim(1e1,1e6)
-    #ax.set_ylim([1e0, 1e10])
+    #plt.ylim([1e-1, 1e6])
+    plt.grid(True)
     plt.legend()
-    plt.savefig("recoil_halite/plot/nuclear_recoil_"+name+".png", bbox_inches="tight")
+    plt.savefig("recoil_halite/plot/nuclear_recoil_"+name+flux_name+".png", bbox_inches="tight")
 
 #scrive il dR/dE su un file .dat
-def Stampa(name, Conta): 
-    f = open("recoil_halite/Halite_muon_recoil_"+name+".dat", "w") #apre un file e ci stampa le intestazioni
+def Stampa(name, flux_name, Conta, Er): 
+    f = open("recoil_halite/Halite_muon_recoil_"+name+flux_name+".dat", "w") #apre un file e ci stampa le intestazioni
     print("# dR/dEr [1/keV/kg/Myr]", file = f)
     # ['S', 'proton', 'F', 'Ne', 'Cl', 'Na', 'Si', 'O', 'alpha', 'P', 'N', 'C', 'Al', 'Mg', 'Be', 'He', 'B', 'Ar', 'Li']
     print("# Er [keV], S, F, Ne, Cl, Na, Si, O, P, N, C, Al, Mg, Be, B, Ar, Li", file = f)
 
-    for i in range(n-1): #n, lenght e rho definiti sotto
+    Er_width = np.diff(Er)
+    Er_mid = Er[:-1] + Er_width/2
+
+    for i in range(len(Er)-1): #n, lenght e rho definiti sotto
         energy = "{:e}".format(Er_mid[i]*1e3) # {:e} annuncia che metterà un float e poi gli da con .format il valore della stringa normalizzata con tutte le costanti del caso
         Na = "{:e}".format((Conta[2][i] + Conta[3][5][i])*1e-3/Er_width[i]/(length*rho)*np.pi*2)
         #print(Conta[2][i])
