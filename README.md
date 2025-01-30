@@ -1,2 +1,2 @@
 # Thesis
-Study on the possible tracks of cosmic rays in paleo-detectors
+Paleo-detectors as a probe of a possible explosion of a supernova in the past
