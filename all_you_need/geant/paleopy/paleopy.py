@@ -571,7 +571,7 @@ class Mineral:
         
         return dRdx_mu
 
-    def dRdx_muons_fefe(self, y_bins, flux_name, N = 1):
+    def dRdx_muons_fefe(self, y_bins, name, flux_name, N = 1):
         y_width = np.diff(y_bins)
         y = y_bins[:-1] + y_width/2.
         #Returns in events/kg/Myr/nm
@@ -600,7 +600,7 @@ class Mineral:
             dEdx_interp = interp1d(x, dEdx, bounds_error=False, fill_value='extrapolate')
             
             E_list = xtoE_interp(y)
-            dRdx_nuc = N*self.loadMuon_fefe("20pc",flux_name)[i](E_list)*dEdx_interp(y)
+            dRdx_nuc = N*self.loadMuon_fefe(name,flux_name)[i](E_list)*dEdx_interp(y)
             
             #print(len(x), len(dRdx_mu))
             dRdx_mu += dRdx_nuc #Isotope fractions are already included in the tabulated muon spectra
